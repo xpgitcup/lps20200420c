@@ -2,8 +2,9 @@ package cn.edu.cup.hydraulic;
 
 public enum HydraulicUnitType {
     Undefined,
-    PipeLine,  // 枝状管网
+    Pipeline,  // 枝状管网
     Station,
+    Pipe,
     Source,
     Sink,
     Pump,

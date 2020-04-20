@@ -31,7 +31,26 @@ public abstract class CustomObject {
         rawData.newChild("");
     }
 
+    public String toString() {
+        return getName() + ":" + getModel();
+    }
+
     public abstract String getDataFileName();
+
+    public void exportToFile() {
+        String fileName = getDataFileName();
+        logger.log(Level.INFO, "export to file: {0}...", fileName);
+        File file = new File(fileName);
+        if (file.exists()) {
+            file.delete();
+        }
+        try {
+            file.createNewFile();
+            writeToFile(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void importFromFile() {
         String fileName = getDataFileName();
@@ -41,7 +60,6 @@ public abstract class CustomObject {
         if (file.exists()) {
             logger.log(Level.INFO, "发现文件: {0}...", fileName);
             RawData items = readFromFile(file);
-            System.out.println(items.getDataItems().toString());
             // 保存数据
             rawData.getDataItems().putAll(items.getDataItems());
             // 对比关键字

@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 
-import static cn.edu.cup.hydraulic.HydraulicUnitType.Station;
-
 public class HydraulicUnit extends CustomObject {
 
     private HydraulicUnitType hydraulicUnitType;
@@ -19,6 +17,17 @@ public class HydraulicUnit extends CustomObject {
         hydraulicUnitType = HydraulicUnitType.Undefined;
         setModel(s);
         hydralicChildren = new ArrayList<>();
+    }
+
+    public void updateChildren() {
+        String childrenString = "";
+        for (int i = 0; i < getHydralicChildren().size(); i++) {
+            childrenString += getHydralicChildren().get(i).toString();
+            if (i < getHydralicChildren().size() - 1) {
+                childrenString += " ";
+            }
+        }
+        getRawData().getDataItems().get("子节点列表").setValueString(childrenString);
     }
 
     @Override
@@ -44,10 +53,14 @@ public class HydraulicUnit extends CustomObject {
         switch (hydraulicUnitType) {
             case Undefined:
                 break;
-            case PipeLine:
+            case Pipeline:
+                hydraulicUnit = new Pipeline(config[1]);
                 break;
             case Station:
                 hydraulicUnit = new Station(config[1]);
+                break;
+            case Pipe:
+                hydraulicUnit = new Pipe(config[1]);
                 break;
             case Source:
                 hydraulicUnit = new EquipmentSource(config[1]);
