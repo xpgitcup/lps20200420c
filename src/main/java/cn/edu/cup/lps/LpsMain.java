@@ -19,6 +19,6 @@ public class LpsMain {
         pipeLine.setDataPath(dataPath);
         pipeLine.importFromFile();
 
-        System.out.println("获取：\"" + pipeLine.getModel() + "\"数据.");
+        System.out.println("获取：\"" + pipeLine.getModel() + "\"数据 ok.");
     }
 }
