@@ -62,7 +62,6 @@ public abstract class CustomObject {
             file.createNewFile();
             try (PrintWriter printWriter = new PrintWriter(file, "utf-8")) {
                 String rawDataString = JSON.toJSONString(getRawData(), SerializerFeature.PrettyFormat);
-//                String rawDataString = JSON.toJSONString(getRawData());
                 printWriter.println(rawDataString);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -88,13 +87,12 @@ public abstract class CustomObject {
             reader.close();
 
             items = JSON.parseObject(laststr, RawData.class);
-            System.out.println("读入的原始数据：");
-            System.out.println(laststr);
-            System.out.println("转化后：");
-            System.out.println(items);
-            System.out.println("转化后--JSON：");
-            System.out.println(JSON.toJSONString(items));
-
+//            System.out.println("读入的原始数据：");
+//            System.out.println(laststr);
+//            System.out.println("转化后：");
+//            System.out.println(items);
+//            System.out.println("转化后--JSON：");
+//            System.out.println(JSON.toJSONString(items));
         } catch (Exception e) {
             e.printStackTrace();
         }
