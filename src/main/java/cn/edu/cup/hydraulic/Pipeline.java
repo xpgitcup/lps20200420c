@@ -13,6 +13,22 @@ public class Pipeline extends HydraulicUnit {
         setName(getHydraulicUnitType().toString());
     }
 
+    @Override
+    public void exportToFile() {
+        super.exportToFile();
+        for (HydraulicUnit e: getHydralicChildren()) {
+            e.exportToFile();
+        }
+    }
+
+    public void fillSampleData(int k) {
+        for (HydraulicUnit e: getHydralicChildren()) {
+            if (e instanceof Pipe) {
+                ((Pipe) e).fillSampleProfile(k);
+            }
+        }
+    }
+
     public void autoCreatePipe() {
         int n = getHydralicChildren().size();
         HydraulicUnit e, ee, p;

@@ -124,6 +124,9 @@ public class HydraulicUnit extends CustomObject {
         return getDataPath() + "/" + getModel() + "." + getHydraulicUnitType().toString() + ".json";
     }
 
+    @Override
+    public void updateProperties() {}
+
     public HydraulicUnitType getHydraulicUnitType() {
         return hydraulicUnitType;
     }

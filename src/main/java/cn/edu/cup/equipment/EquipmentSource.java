@@ -9,4 +9,10 @@ public class EquipmentSource extends HydraulicUnit {
         setHydraulicUnitType(HydraulicUnitType.Source);
         setName(getHydraulicUnitType().toString());
     }
+
+    @Override
+    protected void setupRawData() {
+        super.setupRawData();
+
+    }
 }

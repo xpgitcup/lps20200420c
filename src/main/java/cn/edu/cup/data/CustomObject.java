@@ -37,6 +37,20 @@ public abstract class CustomObject {
 
     public abstract String getDataFileName();
 
+    public abstract void updateProperties();
+
+    public double getKeyDouble(String key) {
+        return Double.parseDouble(rawData.getDataItems().get(key).getValueString());
+    }
+
+    public double[] getKeyVector(String key) {
+        return JSON.parseObject(rawData.getDataItems().get(key).getValueString(), double[].class);
+    }
+
+    public void setKeyValue(String key, String value) {
+        rawData.setValue(key, value);
+    }
+
     public void exportToFile() {
         String fileName = getDataFileName();
         logger.log(Level.INFO, "export to file: {0}...", fileName);
@@ -44,12 +58,12 @@ public abstract class CustomObject {
         if (file.exists()) {
             file.delete();
         }
-        try {
-            file.createNewFile();
-            writeToFile(file);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        writeToFile(file);
+//        try {
+//            file.createNewFile();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public void importFromFile() {
@@ -73,6 +87,7 @@ public abstract class CustomObject {
             writeToFile(file);
         }
 
+        updateProperties();
     }
 
     private void writeToFile(File file) {

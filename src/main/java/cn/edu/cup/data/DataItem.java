@@ -3,12 +3,12 @@ package cn.edu.cup.data;
 public class DataItem {
 
     private DataValueType dataValueType;
-    private String isoUnit;
+    private String unit;
     private String valueString;
 
-    public DataItem(DataValueType dataValueType, String isoUnit, String valueString) {
+    public DataItem(DataValueType dataValueType, String unit, String valueString) {
         this.dataValueType = dataValueType;
-        this.isoUnit = isoUnit;
+        this.unit = unit;
         this.valueString = valueString;
     }
 
@@ -20,12 +20,12 @@ public class DataItem {
         this.dataValueType = dataValueType;
     }
 
-    public String getIsoUnit() {
-        return isoUnit;
+    public String getUnit() {
+        return unit;
     }
 
-    public void setIsoUnit(String isoUnit) {
-        this.isoUnit = isoUnit;
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     public String getValueString() {
